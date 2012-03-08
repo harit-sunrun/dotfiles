@@ -46,6 +46,7 @@ alias path='echo -e ${PATH//:/\\n}'
 alias du='du -kh'       # Makes a more readable output.
 alias df='df -kTh'
 alias lt='ls -ltr'
+alias pas='cat ~/.passwd'
 
 #-------------------------------------------------------------
 # File & string-related functions:
@@ -91,3 +92,10 @@ function pp() { my_ps -f | awk '!/awk/ && $0~var' var=${1:-".*"} ; }
 # Prompt
 #-------------------------------------------------------------
 export PS1="\u@\h\w - \t$ "
+
+#-------------------------------------------------------------
+# Paths
+#-------------------------------------------------------------
+export PYTHONPATH=~/code/sr/python/work/dw/analytics
+PATH=$PATH:/usr/local/mongodb/bin
+export PATH
