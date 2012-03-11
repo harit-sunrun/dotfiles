@@ -97,5 +97,14 @@ export PS1="\u@\h\w - \t$ "
 # Paths
 #-------------------------------------------------------------
 export PYTHONPATH=~/code/sr/python/work/dw/analytics
-PATH=$PATH:/usr/local/mongodb/bin
+
+# MongoDB path
+if [ -d /usr/local/mongodb/bin ]; then
+  PATH=$PATH:/usr/local/mongodb/bin
+fi
+
+# Hadoop path
+if [ -d /usr/local/hadoop/bin ]; then
+  PATH=$PATH:/usr/local/hadoop/bin
+fi
 export PATH
