@@ -26,6 +26,8 @@ let g:neocomplcache_enable_at_startup = 1
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 
 " mapping keys
-nnoremap <F8> :!/opt/local/bin/ctags -R --python-kinds=-i *.py<CR>
-nnoremap <F4> :TlistToggle<CR>
+nnoremap <C-c><C-c> :!/opt/local/bin/ctags -R --python-kinds=-i *.py<CR>
+nnoremap <C-t><C-t> :TlistToggle<CR>
 inoremap <C-space> <C-x><C-o> " autocomplete key map
+nnoremap <C-f><C-f> :FufFile<CR>
+nnoremap <C-n><C-n> :NERDTreeToggle<CR>
