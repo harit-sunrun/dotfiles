@@ -1,4 +1,22 @@
 #-------------------------------------------------------------
+# knowing Operating System
+platform='unknown'
+unamestr=`uname`
+if [[ "$unamestr" == 'Linux' ]]; then
+       platform='linux'
+elif [[ "$unamestr" == 'Darwin' ]]; then
+       platform='darwin'
+fi
+#-------------------------------------------------------------
+
+#-------------------------------------------------------------
+# Java Path
+#-------------------------------------------------------------
+if [[ "$platform" == 'darwin' ]]; then
+    export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Home/
+fi
+
+#-------------------------------------------------------------
 # Source global definitions (if any)
 #-------------------------------------------------------------
 
@@ -108,3 +126,26 @@ if [ -d /usr/local/hadoop/bin ]; then
   PATH=$PATH:/usr/local/hadoop/bin
 fi
 export PATH
+
+# EC2 paths
+export EC2_HOME=~/.ec2
+export AWS_RDS_HOME=~/.rds
+export PATH=$PATH:$EC2_HOME/bin:$AWS_RDS_HOME/bin
+export EC2_PRIVATE_KEY=`ls $EC2_HOME/pk-*.pem`
+export EC2_CERT=`ls $EC2_HOME/cert-*.pem`
+
+#-------------------------------------------------------------
+# GIT
+#-------------------------------------------------------------
+
+#showing git branches in bash prompt
+function parse_git_branch {
+          git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+
+#-------------------------------------------------------------
+# Prompt
+#-------------------------------------------------------------
+#export PS1="\u@\h\w - \t $ "
+export PS1="\u@\h\w - \t \$(parse_git_branch) $ "
+
