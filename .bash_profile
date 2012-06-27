@@ -114,7 +114,9 @@ export PS1="\u@\h\w - \t$ "
 #-------------------------------------------------------------
 # Paths
 #-------------------------------------------------------------
-export PYTHONPATH=~/code/sr/python/work/dw/analytics
+export PYTHONPATH=~/code/sr/python/work/dw/analytics:~/code/p/vlists/vlists
+PYTHONPATH=$PYTHONPATH:$(pwd)/django-social-auth/:~/code/p/django-debug-toolbar/build/lib/debug_toolbar
+
 
 # MongoDB path
 if [ -d /usr/local/mongodb/bin ]; then
@@ -124,6 +126,16 @@ fi
 # Hadoop path
 if [ -d /usr/local/hadoop/bin ]; then
   PATH=$PATH:/usr/local/hadoop/bin
+fi
+
+# Nginx path
+if [ -f /usr/local/sbin/nginx ]; then
+  PATH=$PATH:/usr/local/sbin
+fi
+
+# MySQL path
+if [ -d /usr/local/mysql/bin ]; then
+  PATH=$PATH:/usr/local/mysql/bin
 fi
 export PATH
 
@@ -148,4 +160,13 @@ function parse_git_branch {
 #-------------------------------------------------------------
 #export PS1="\u@\h\w - \t $ "
 export PS1="\u@\h\w - \t \$(parse_git_branch) $ "
+
+
+##
+# Your previous /Users/hhimanshu/.bash_profile file was backed up as /Users/hhimanshu/.bash_profile.macports-saved_2012-05-23_at_10:58:00
+##
+
+# MacPorts Installer addition on 2012-05-23_at_10:58:00: adding an appropriate PATH variable for use with MacPorts.
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+# Finished adapting your PATH environment variable for use with MacPorts.
 
